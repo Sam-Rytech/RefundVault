@@ -3,6 +3,13 @@ import { useEffect, useState } from 'react'
 import { ensureChain } from '../lib/contract'
 import { shorten } from '../lib/utils'
 
+// Extend the Window interface to include ethereum
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 export default function ConnectButton() {
   const [account, setAccount] = useState<string | null>(null)
 
