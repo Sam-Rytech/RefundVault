@@ -7,7 +7,7 @@ export default function ConnectButton() {
   const [account, setAccount] = useState<string | null>(null)
 
   async function connect() {
-    // @ts-ignore
+    
     const accs: string[] = await window.ethereum.request({
       method: 'eth_requestAccounts',
     })
@@ -16,13 +16,13 @@ export default function ConnectButton() {
   }
 
   useEffect(() => {
-    // @ts-ignore
+    
     if (typeof window !== 'undefined' && window.ethereum) {
-      // @ts-ignore
+      
       window.ethereum
         .request({ method: 'eth_accounts' })
         .then((accs: string[]) => setAccount(accs[0] ?? null))
-      // @ts-ignore
+      
       window.ethereum.on('accountsChanged', (accs: string[]) =>
         setAccount(accs[0] ?? null)
       )
